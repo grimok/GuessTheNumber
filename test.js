@@ -16,6 +16,7 @@ if (localStorage.getItem("highScore") === null) {
 document.querySelector('.g-check').addEventListener('click', function () {
     if(gameState){
         const guess = Number(document.querySelector('.g-input').value);
+       //Debug removed
         totalGuess += 1;
         if (guess == rand){
             document.querySelector('.g-button').textContent = "Congrats! You WIN 🏆🏆";
