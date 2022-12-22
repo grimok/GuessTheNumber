@@ -16,14 +16,18 @@ if (localStorage.getItem("highScore") === null) {
 document.querySelector('.g-check').addEventListener('click', function () {
     if(gameState){
         const guess = Number(document.querySelector('.g-input').value);
-       //Debug removed
+        document.querySelector('.display').textContent = guess;
         totalGuess += 1;
         if (guess == rand){
             document.querySelector('.g-button').textContent = "Congrats! You WIN 🏆🏆";
             document.querySelector('.g-button').style["color"] = "#08ff00";
+            document.querySelector('.before').style.display = "block";
             document.querySelector('.total-guess').textContent = "❓ Total Guesses: " + String(totalGuess);
-            document.querySelector('.high-score').textContent = "🏆 High Score: " + String(totalGuess);
-            localStorage.setItem('highScore',String(totalGuess))
+            if(totalGuess < localStorage.getItem('highScore')){
+                localStorage.setItem('highScore', String(guess))
+                document.querySelector('.high-score').textContent = "🏆 High Score: " + String(totalGuess);
+            }
+            document.querySelector('.check-button').textContent = "Replay!";
             gameState = false;
         }else if(guess < rand){
             document.querySelector('.g-button').textContent = "The number is greater than your guess!";
@@ -35,7 +39,7 @@ document.querySelector('.g-check').addEventListener('click', function () {
             document.querySelector('.total-guess').textContent = "❓ Total Guesses: " + String(totalGuess);
         }
     }else{
-        alert("The game is already completed! Please reload the page.")
+        window.location.reload();
     }    
 })
 
