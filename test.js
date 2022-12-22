@@ -24,7 +24,7 @@ document.querySelector('.g-check').addEventListener('click', function () {
             document.querySelector('.before').style.display = "block";
             document.querySelector('.total-guess').textContent = "❓ Total Guesses: " + String(totalGuess);
             if(totalGuess < localStorage.getItem('highScore')){
-                localStorage.setItem('highScore', String(guess))
+                localStorage.setItem('highScore', String(totalGuess))
                 document.querySelector('.high-score').textContent = "🏆 High Score: " + String(totalGuess);
             }
             document.querySelector('.check-button').textContent = "Replay!";
