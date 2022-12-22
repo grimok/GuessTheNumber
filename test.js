@@ -15,7 +15,6 @@ if (localStorage.getItem("highScore") === null) {
 
 document.querySelector('.g-check').addEventListener('click', function () {
     if(gameState){
-        document.querySelector('.debug-tool').textContent = "⚠️ Debug Tool: " + String(rand);
         const guess = Number(document.querySelector('.g-input').value);
         totalGuess += 1;
         if (guess == rand){
